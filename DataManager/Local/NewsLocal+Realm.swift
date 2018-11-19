@@ -1,0 +1,77 @@
+//
+//  NewsRealm.swift
+//  NewsBuckets
+//
+//  Created by Jieyi on 2018/05/22.
+//  Copyright © 2018 SmashKs All rights reserved.
+//
+
+//import RealmSwift
+
+import RxSwift
+
+public class NewsRealm: LocalDataService {
+//    private var realm: Realm
+//    private lazy var realmPath = realm.configuration.fileURL!
+
+//    public init(_ realm: Realm) {
+//        self.realm = realm
+//    }
+    public init() {
+    }
+
+    public func retrieveFakeList() -> Single<FakeEntity> {
+        // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
+//        return Single.just(realm.objects(TempObj.self))
+//            .map { _ -> FakeEntity in
+//                FakeEntity()
+//            }
+        return Single.create {
+            $0(.success(FakeEntity()))
+            return Disposables.create()
+        }
+    }
+
+    public func update(info entity: Info) -> Completable {
+        // OPTIMIZE: (jieyi 2018/05/22) We can create a good add rx completable method.
+        return Completable.create {
+//            do {
+//                try self.realm.write {
+//                    // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
+//                    self.realm.add(TempObj())
+//                }
+//                $0(.completed)
+//            } catch {
+//                $0(.error(error))
+//            }
+            $0(.completed)
+
+            return Disposables.create()
+        }
+    }
+
+    public func remove(info entity: Info? = nil) -> Completable {
+        return Completable.create { [weak self] completable in
+            guard let strongSelf = self else {
+                return Disposables.create()
+            }
+
+            do {
+                // OPTIMIZE: (jieyi 2018/05/22) We can create a good add rx completable method.
+//                strongSelf.realm.delete(TempObj())
+                completable(.completed)
+            } catch {
+                completable(.error(error))
+            }
+
+            return Disposables.create()
+        }
+    }
+}
+
+//class TempObj: Object {
+class TempObj {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var title: String = ""
+    @objc dynamic var name: String = ""
+}
