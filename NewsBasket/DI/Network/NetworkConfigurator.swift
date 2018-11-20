@@ -7,7 +7,7 @@
 //
 
 import DataManager
-//import Moya
+import Moya
 import Swinject
 
 class NetworkConfigurator: Assembly {
@@ -15,14 +15,14 @@ class NetworkConfigurator: Assembly {
 
         // MARK: - Necessary Objects
 
-//        container.register(MoyaProvider<NewsMoyaConfig>.self) { _ in
-//            MoyaProvider<NewsMoyaConfig>()
-//        }
+        container.register(MoyaProvider<NewsMoyaConfig>.self) { _ in
+            MoyaProvider<NewsMoyaConfig>()
+        }
 
         // MARK: - Provide to the others Assembly
 
-//        container.register(RemoteDataService.self, name: "moya") {
-//            NewsService($0.resolve(MoyaProvider<NewsMoyaConfig>.self)!)
-//        }
+        container.register(RemoteDataService.self, name: "moya") {
+            NewsService($0.resolve(MoyaProvider<NewsMoyaConfig>.self)!)
+        }
     }
 }

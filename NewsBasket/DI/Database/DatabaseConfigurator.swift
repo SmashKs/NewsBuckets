@@ -8,7 +8,7 @@
 
 import CoreData
 import DataManager
-//import RealmSwift
+import RealmSwift
 import Swinject
 
 class DatabaseConfigurator: Assembly {
@@ -17,18 +17,18 @@ class DatabaseConfigurator: Assembly {
         // MARK: - Necessary Objects
 
         // For Realm
-//        container.register(Realm.self) { _ in
-//            do {
-//                return try Realm()
-//            } catch {
-//                fatalError("Creating a Realm()'s object failed!")
-//            }
-//        }
+        container.register(Realm.self) { _ in
+            do {
+                return try Realm()
+            } catch {
+                fatalError("Creating a Realm()'s object failed!")
+            }
+        }
 
         // MARK: - Provide to the others Assembly
 
-//        container.register(LocalDataService.self, name: "realm") {
-//            NewsRealm($0.resolve(Realm.self)!)
-//        }
+        container.register(LocalDataService.self, name: "realm") {
+            NewsRealm($0.resolve(Realm.self)!)
+        }
     }
 }

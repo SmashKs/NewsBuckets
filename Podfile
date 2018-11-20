@@ -18,7 +18,7 @@ target 'NewsBasket' do
   
   # For Dependency Injection
   pod 'Swinject', '~> 2.5.0'
-  
+
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   
@@ -34,9 +34,6 @@ target 'NewsBasket' do
     # For Data Storage
     pod 'Realm', '~> 3.11.2'
     pod 'RealmSwift', '~> 3.11.2'
-    
-    # For Dependency Injection
-    pod 'Swinject', '~> 2.5.0'
   end
   
   target 'Utility' do

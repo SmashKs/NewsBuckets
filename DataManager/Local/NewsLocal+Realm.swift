@@ -6,45 +6,37 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
-//import RealmSwift
-
+import RealmSwift
 import RxSwift
 
 public class NewsRealm: LocalDataService {
-//    private var realm: Realm
-//    private lazy var realmPath = realm.configuration.fileURL!
+    private var realm: Realm
+    private lazy var realmPath = realm.configuration.fileURL!
 
-//    public init(_ realm: Realm) {
-//        self.realm = realm
-//    }
-    public init() {
+    public init(_ realm: Realm) {
+        self.realm = realm
     }
 
     public func retrieveFakeList() -> Single<FakeEntity> {
         // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
-//        return Single.just(realm.objects(TempObj.self))
-//            .map { _ -> FakeEntity in
-//                FakeEntity()
-//            }
-        return Single.create {
-            $0(.success(FakeEntity()))
-            return Disposables.create()
-        }
+        return Single.just(realm.objects(TempObj.self))
+            .map { _ -> FakeEntity in
+                FakeEntity()
+            }
     }
 
     public func update(info entity: Info) -> Completable {
         // OPTIMIZE: (jieyi 2018/05/22) We can create a good add rx completable method.
         return Completable.create {
-//            do {
-//                try self.realm.write {
-//                    // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
-//                    self.realm.add(TempObj())
-//                }
-//                $0(.completed)
-//            } catch {
-//                $0(.error(error))
-//            }
-            $0(.completed)
+            do {
+                try self.realm.write {
+                    // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
+                    self.realm.add(TempObj())
+                }
+                $0(.completed)
+            } catch {
+                $0(.error(error))
+            }
 
             return Disposables.create()
         }
@@ -58,7 +50,7 @@ public class NewsRealm: LocalDataService {
 
             do {
                 // OPTIMIZE: (jieyi 2018/05/22) We can create a good add rx completable method.
-//                strongSelf.realm.delete(TempObj())
+                strongSelf.realm.delete(TempObj())
                 completable(.completed)
             } catch {
                 completable(.error(error))
@@ -69,8 +61,7 @@ public class NewsRealm: LocalDataService {
     }
 }
 
-//class TempObj: Object {
-class TempObj {
+class TempObj: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
     @objc dynamic var name: String = ""

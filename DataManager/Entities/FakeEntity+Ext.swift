@@ -6,10 +6,9 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
-//import EVReflection
+import EVReflection
 
-//public class FakeEntity: EVObject {
-public class FakeEntity {
+public class FakeEntity: EVObject {
     typealias Infos = [Info]?
 
     var infoList: Infos = nil

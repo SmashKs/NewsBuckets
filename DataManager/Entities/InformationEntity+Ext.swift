@@ -7,14 +7,13 @@
 //
 
 import Utility
-//import EVReflection
-//import RealmSwift
+import EVReflection
+import RealmSwift
 
-//public class InformationEntity: EVObject {
-public class InformationEntity {
+public class InformationEntity: EVObject {
     var id: Int?
     var title: String?
-//    var updatedAt: Date?
+    var updatedAt: Date?
 }
 
 public typealias Info = InformationEntity
