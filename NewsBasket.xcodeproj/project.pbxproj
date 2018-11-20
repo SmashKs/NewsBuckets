@@ -38,6 +38,7 @@
 		607009121FD9AA80018A2BF7 /* MainRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700FB8D16160DA7BA5A010 /* MainRouterInput.swift */; };
 		60700935146E4D42E2A20582 /* MainInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700DA6D168E1FAF6E27DA9 /* MainInteractorInput.swift */; };
 		60700965F8D81D3519A0820E /* SecondPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700AF46FAB1AD8D4B2EFFB /* SecondPresenter.swift */; };
+		607009BB549353FD4C501A1A /* NewsMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607005FECA47413F3A084D53 /* NewsMessagingDelegate.swift */; };
 		60700A199B7B0E81836D2AD9 /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070053A8BD64290B90A6FE1 /* RemoteDataService.swift */; };
 		60700AC2CEC8827901F69E56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 607000E2082E45AD446C66A7 /* GoogleService-Info.plist */; };
 		60700B1D08FE322521EDE084 /* FakeEntity+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607001855701AC1042383C61 /* FakeEntity+Ext.swift */; };
@@ -122,6 +123,7 @@
 		6070055E7F628D0369CB68FA /* Interactor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Interactor+Extension.swift"; sourceTree = "<group>"; };
 		607005C7554C9DAA7D95CF49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		607005D235C68FA9B6E7319E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		607005FECA47413F3A084D53 /* NewsMessagingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsMessagingDelegate.swift; sourceTree = "<group>"; };
 		6070061B77B18C087DA57EEB /* MainViewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		607006FB60AC398EB3DB6CBF /* ObjectExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectExt.swift; sourceTree = "<group>"; };
 		607007327E0679E89D7A3D30 /* NewsService+Moya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsService+Moya.swift"; sourceTree = "<group>"; };
@@ -432,6 +434,14 @@
 			path = Local;
 			sourceTree = "<group>";
 		};
+		607009FF2AC6516F87FDA6BD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				607005FECA47413F3A084D53 /* NewsMessagingDelegate.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		60700ACA5BF5B6F9B7348835 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +625,7 @@
 				607004B1C48D34E7B4E2E9D1 /* Resources */,
 				607000E2082E45AD446C66A7 /* GoogleService-Info.plist */,
 				607006AC088A0EB6263764E8 /* DataManager */,
+				607009FF2AC6516F87FDA6BD /* Services */,
 			);
 			path = NewsBasket;
 			sourceTree = "<group>";
@@ -953,6 +964,7 @@
 				6070023ED8BD2291C510280D /* SecondInitializer.swift in Sources */,
 				60700725FB1D52CD9ED1BBA9 /* SecondConfigurator.swift in Sources */,
 				60700D3507C56C01A8AAE4F8 /* CoreData+News.xcdatamodeld in Sources */,
+				607009BB549353FD4C501A1A /* NewsMessagingDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,7 +31,7 @@ class MainViewController: UIViewController, MainViewInput {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        presenter.getList()
+//        presenter.getList()
     }
 
     // MARK: - MainViewInput

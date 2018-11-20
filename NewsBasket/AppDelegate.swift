@@ -7,14 +7,47 @@
 //
 
 import UIKit
+import Utility
+import UserNotifications
+import FirebaseCore
+import FirebaseMessaging
+import SwiftyBeaver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
+                     willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+
+        // Init the log module.
+        let console = ConsoleDestination()
+        console.format = loggerFormat
+        swiftyLogger.addDestination(console)
+
+        return true
+    }
+
+    func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+            Messaging.messaging().delegate = self // For iOS 10 data message (sent via FCM).
+
+            // Open a alert dialog for getting the grant to receive three type of notification (alert), (sound),
+            // (badge).
+            UNUserNotificationCenter.current()
+                .requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+                    logw(granted ? "grated" : "no granted")
+                })
+        } else {
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
+
         return true
     }
 
@@ -48,5 +81,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate.
         // See also applicationDidEnterBackground:.
     }
-}
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Transfer Data to String.
+        let deviceTokenString = deviceToken.reduce("", { $0 + String(format: "%02X", $1) })
+        logw("deviceTokenString: \(deviceTokenString)")
+    }
+}
