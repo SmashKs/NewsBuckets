@@ -17,7 +17,7 @@ class MainInteractor: MainInteractorInput {
     }
 
     func addSubscriber() -> Completable {
-        return repository.add(subscriber: [:])
+        return repository.add(subscriber: TokenParams())
     }
 
     func getFakeList() -> Single<FakeEntity> {

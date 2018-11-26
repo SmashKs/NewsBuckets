@@ -20,15 +20,15 @@ public class NewsService: RemoteDataService {
         self.provider = provider
     }
 
-    public func createSubscriber() -> Completable {
-        var request = rxProvider.request(NewsMoyaConfig.createSubscriber([:]))
+    public func createSubscriber(parameters: [String: Any]) -> Completable {
+        var request = rxProvider.request(NewsMoyaConfig.createSubscriber(parameters))
         #if DEBUG
         request = request.debug()
         #endif
         return request.asCompletable()
     }
 
-    public func replaceKeywords() -> Completable {
+    public func replaceKeywords(parameters: [String: Any]) -> Completable {
         fatalError("replaceKeywords() has not been implemented")
     }
 

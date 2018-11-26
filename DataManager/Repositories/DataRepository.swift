@@ -21,11 +21,11 @@ public class DataRepository: Repository {
         return remote.fetch(newses: parameters)
     }
 
-    public func add(subscriber parameters: [String: String]) -> Completable {
+    public func add(subscriber parameters: TokenParams?) -> Completable {
         return remote.new(subscriber: parameters)
     }
 
-    public func update(keyword parameters: [String: String]) -> Completable {
+    public func update(keyword parameters: keywordParams?) -> Completable {
         return remote.modify(keyword: parameters)
     }
 

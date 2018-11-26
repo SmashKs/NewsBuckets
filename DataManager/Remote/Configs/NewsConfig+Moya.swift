@@ -14,7 +14,7 @@ import Utility
 public enum NewsMoyaConfig {
     case retrieveNewsList
     case createSubscriber([String: Any])
-    case replaceKeywords([String: Any])
+    case replaceSubscriber([String: Any])
 }
 
 extension NewsMoyaConfig: TargetType {
@@ -39,9 +39,10 @@ extension NewsMoyaConfig: TargetType {
                 switch self {
                     case .retrieveNewsList:
                         return "news/"
-                    case .createSubscriber,
-                         .replaceKeywords:
+                    case .createSubscriber:
                         return "subscriber/"
+                    case .replaceSubscriber(let params):
+                        return "subscriber/\(params["token"]!)/"
                 }
             }
 
@@ -56,7 +57,7 @@ extension NewsMoyaConfig: TargetType {
                 return .get
             case .createSubscriber:
                 return .post
-            case .replaceKeywords:
+            case .replaceSubscriber:
                 return .put
         }
     }
@@ -68,8 +69,9 @@ extension NewsMoyaConfig: TargetType {
             case .createSubscriber(let params):
                 return .requestParameters(parameters: ["token": "1234",
                                                        "firebase_token": "213123"], encoding: JSONEncoding.default)
-            case .replaceKeywords(let params):
-                return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
+            case .replaceSubscriber(let params):
+                return .requestParameters(parameters: ["firebase_token": "213123",
+                                                       "keywords": ""], encoding: JSONEncoding.default)
         }
     }
 
@@ -80,7 +82,7 @@ extension NewsMoyaConfig: TargetType {
                 return "{\"id\": 123}".data(using: .utf8)!
             case .createSubscriber:
                 return "{}".data(using: .utf8)!
-            case .replaceKeywords:
+            case .replaceSubscriber:
                 return "{}".data(using: .utf8)!
         }
     }

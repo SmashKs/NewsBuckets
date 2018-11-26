@@ -13,9 +13,9 @@ import RxSwift
 public protocol DataStore {
     func fetch(newses parameters: [String: Any]) -> Completable
 
-    func new(subscriber parameters: [String: String]) -> Completable
+    func new(subscriber parameters: Parameters?) -> Completable
 
-    func modify(keyword parameters: [String: String]) -> Completable
+    func modify(keyword parameters: Parameters?) -> Completable
 
     func fetchFakeList() -> Single<FakeEntity>
 

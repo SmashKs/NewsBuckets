@@ -56,5 +56,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ApiRequestString</key>
+	<string>/api/news/v1/</string>
+	<key>UrlDomainString</key>
+	<string>http://api-server.dev3.cloverlab.jp</string>
 </dict>
 </plist>
