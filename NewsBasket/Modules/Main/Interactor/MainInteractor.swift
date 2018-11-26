@@ -16,11 +16,15 @@ class MainInteractor: MainInteractorInput {
         repository = data
     }
 
+    func addSubscriber() -> Completable {
+        return repository.newSubscriber()
+    }
+
     func getFakeList() -> Single<FakeEntity> {
         return repository.fetchFakeList()
     }
 
-    func saveInformationEntity(info entity: Info) -> Completable {
+    func keepInformationEntity(info entity: Info) -> Completable {
         return repository.persist(info: entity).thruInternet()
     }
 }

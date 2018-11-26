@@ -21,14 +21,10 @@ extension Entity {
 }
 
 extension Entity {
-    /**
-     Extract the Entity self's all variables information to a string.
-
-     - parameters:
-        - entity: Entity self.
-
-     - returns: The information of Entity's all variables.
-    */
+    /// Extract the Entity self's all variables information to a string.
+    ///
+    /// - Parameter entity: Entity self.
+    /// - Returns: The information of Entity's all variables.
     private func extractSelfToString(self entity: Entity) -> String {
         let mirror = Mirror(reflecting: entity)
         var content = [String: String]()
@@ -49,9 +45,10 @@ extension Entity {
         return String(describing: content)
     }
 
-    /**
-     Extract the array variables information recursively.
-    */
+    /// Extract the array variables information recursively.
+    ///
+    /// - Parameter array:
+    /// - Returns: return
     private func extractArrayToString(array: [Any]) -> String {
         var content = [String: String]()
 

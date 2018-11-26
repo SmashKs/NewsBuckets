@@ -8,7 +8,11 @@
 
 import RxSwift
 
+/// Interactor between data layer and presentation layer.
+/// Using prefix name (fetch), (new), (modify), (remove), (persist)
 public protocol DataStore {
+    func newSubscriber() -> Completable
+    
     func fetchFakeList() -> Single<FakeEntity>
 
     func persist(info entity: Info?) -> Completable

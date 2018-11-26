@@ -32,6 +32,7 @@ class MainViewController: UIViewController, MainViewInput {
         super.viewDidAppear(animated)
 
 //        presenter.getList()
+        presenter.addSubscriber()
     }
 
     // MARK: - MainViewInput

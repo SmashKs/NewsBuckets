@@ -15,8 +15,12 @@ public class RemoteDataStore: DataStore {
         self.moyaService = service
     }
 
+    public func newSubscriber() -> Completable {
+        return moyaService.createSubscriber()
+    }
+
     public func fetchFakeList() -> Single<FakeEntity> {
-        return self.moyaService.retrieveFakeList()
+        return moyaService.retrieveFakeList()
     }
 
     public func persist(info entity: Info?) -> Completable {

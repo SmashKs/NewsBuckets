@@ -15,6 +15,8 @@ protocol MainPresenterInput: Presentable {
 
     func viewIsReady()
 
+    func addSubscriber()
+
     func getList()
 
     func gotoNext(vc: UIViewController)

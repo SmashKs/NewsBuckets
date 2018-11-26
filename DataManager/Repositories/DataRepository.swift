@@ -17,6 +17,10 @@ public class DataRepository: DataStore {
         remote = remoteStore
     }
 
+    public func newSubscriber() -> Completable {
+        return remote.newSubscriber()
+    }
+
     public func fetchFakeList() -> Single<FakeEntity> {
         return remote.fetchFakeList()
     }

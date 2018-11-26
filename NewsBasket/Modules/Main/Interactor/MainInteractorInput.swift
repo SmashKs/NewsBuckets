@@ -9,8 +9,12 @@
 import DataManager
 import RxSwift
 
+/// The interactor between data layer and presentation layer.
+/// Using prefix name (get), (add), (update), (delete), (keep)
 protocol MainInteractorInput: Interactable {
+    func addSubscriber() -> Completable
+
     func getFakeList() -> Single<FakeEntity>
 
-    func saveInformationEntity(info entity: Info) -> Completable
+    func keepInformationEntity(info entity: Info) -> Completable
 }

@@ -17,6 +17,19 @@ class MainPresenter: MainPresenterInput {
     func viewIsReady() {
     }
 
+    func addSubscriber() {
+        interactor
+            .addSubscriber()
+            .subscribe { completable in
+                switch completable {
+                    case .completed:
+                        logw("finished!!")
+                    case .error(let error):
+                        loge(error)
+                }
+            }.disposed(by: view.disposable)
+    }
+
     func getList() {
         interactor
             .getFakeList()

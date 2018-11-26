@@ -7,8 +7,6 @@
 //
 
 protocol MainViewInput: Viewable {
-    /**
-     Setup initial state of the view
-     */
+    /// Setup initial state of the view
     func setupInitialState()
 }

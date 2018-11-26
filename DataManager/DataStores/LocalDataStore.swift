@@ -15,6 +15,10 @@ public class LocalDataStore: DataStore {
         localRealm = realm
     }
 
+    public func newSubscriber() -> Completable {
+        fatalError("writeInformation(info:) has not been implemented")
+    }
+    
     public func fetchFakeList() -> Single<FakeEntity> {
         return localRealm.retrieveFakeList()
     }

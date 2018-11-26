@@ -20,6 +20,14 @@ public class NewsService: RemoteDataService {
         self.provider = provider
     }
 
+    public func createSubscriber() -> Completable {
+        var request = rxProvider.request(NewsMoyaConfig.createSubscriber)
+        #if DEBUG
+        request = request.debug()
+        #endif
+        return request.asCompletable()
+    }
+
     public func retrieveFakeList() -> RxSwift.Single<FakeEntity> {
         var request = rxProvider.request(NewsMoyaConfig.retrieveFakeList)
         #if DEBUG

@@ -8,6 +8,7 @@
 
 import FirebaseCore
 import FirebaseMessaging
+import FirebaseInstanceID
 import SwiftyBeaver
 import UIKit
 import UserNotifications
@@ -81,9 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See also applicationDidEnterBackground:.
     }
 
+    /// Below iOS 10, register firebase token.
+    ///
+    /// - Parameters:
+    ///   - application: This application object.
+    ///   - deviceToken: Data incluide firebase device token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Transfer Data to String.
-        let deviceTokenString = deviceToken.reduce("", { $0 + String(format: "%02X", $1) })
-        logw("deviceTokenString: \(deviceTokenString)")
+        Messaging.messaging().apnsToken = deviceToken
     }
 }
