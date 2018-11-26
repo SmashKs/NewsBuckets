@@ -6,21 +6,19 @@
 //  Copyright © 2018 Jieyi Wu. All rights reserved.
 //
 
-import UIKit
-import Utility
-import UserNotifications
 import FirebaseCore
 import FirebaseMessaging
 import SwiftyBeaver
+import UIKit
+import UserNotifications
+import Utility
 
-@UIApplicationMain
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
                      willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-
         // Init the log module.
         let console = ConsoleDestination()
         console.format = loggerFormat
@@ -41,12 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UNUserNotificationCenter.current()
                 .requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
                     logw(granted ? "grated" : "no granted")
-                })
+                })
         } else {
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
+        FirebaseApp.configure()
 
         return true
     }

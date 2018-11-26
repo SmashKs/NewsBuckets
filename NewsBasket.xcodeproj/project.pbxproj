@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27082E3E1A84C598C58ED6E1 /* Pods_NewsBasket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951F93CBAD637AF94C548F07 /* Pods_NewsBasket.framework */; };
 		31EE001D23286C91E39FA653 /* Pods_DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BBEB421A2CC49007014DF /* Pods_DataManager.framework */; };
 		6070002B6715E28DE04B7BD7 /* SecondViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070083BAC063FE7E0717188 /* SecondViewInput.swift */; };
 		6070015C133CBA6842E21CA1 /* LocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700DD505E73FF6F15A96CF /* LocalDataService.swift */; };
@@ -68,7 +69,6 @@
 		94FC8A2C21A2BCE80097011A /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC8A2521A2BCE80097011A /* DataManager.framework */; };
 		94FC8A2D21A2BCE80097011A /* DataManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC8A2521A2BCE80097011A /* DataManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94FC8A3121A2BCFA0097011A /* Utility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FC8A1321A2BCD70097011A /* Utility.framework */; };
-		B5B67C54B048929B73965729 /* Pods_NewsBasket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951F93CBAD637AF94C548F07 /* Pods_NewsBasket.framework */; };
 		FD9E3E2950657A749D68591B /* Pods_DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E104F0FC67ADC54E9050C4E /* Pods_DataManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +169,7 @@
 		9417786F21A2A94D00472628 /* NewsBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9417787221A2A94D00472628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		947BBEB421A2CC49007014DF /* Pods_DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9481DA4421A55AA400687B26 /* NewsBasket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsBasket.entitlements; sourceTree = "<group>"; };
 		94FC8A1321A2BCD70097011A /* Utility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC8A2521A2BCE80097011A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F93CBAD637AF94C548F07 /* Pods_NewsBasket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsBasket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,7 +185,7 @@
 			files = (
 				94FC8A2C21A2BCE80097011A /* DataManager.framework in Frameworks */,
 				94FC8A1A21A2BCD70097011A /* Utility.framework in Frameworks */,
-				B5B67C54B048929B73965729 /* Pods_NewsBasket.framework in Frameworks */,
+				27082E3E1A84C598C58ED6E1 /* Pods_NewsBasket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +618,7 @@
 		9417787121A2A94D00472628 /* NewsBasket */ = {
 			isa = PBXGroup;
 			children = (
+				9481DA4421A55AA400687B26 /* NewsBasket.entitlements */,
 				9417787221A2A94D00472628 /* AppDelegate.swift */,
 				60700ECA2B2C78F12235FC4B /* SupportedFiles */,
 				60700890E88CF2626F6FD452 /* Base.lproj */,
@@ -745,6 +747,14 @@
 				TargetAttributes = {
 					9417786E21A2A94D00472628 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					94FC8A1221A2BCD70097011A = {
 						CreatedOnToolsVersion = 10.1;
@@ -1075,7 +1085,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1130,7 +1140,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1146,15 +1156,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NewsBasket/NewsBasket.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7L72E488F5;
+				DEVELOPMENT_TEAM = U9W4S92WSP;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsBasket/SupportedFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.no1.taiwan.NewsBasket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.no1.taiwan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1167,15 +1177,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NewsBasket/NewsBasket.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7L72E488F5;
+				DEVELOPMENT_TEAM = U9W4S92WSP;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsBasket/SupportedFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.no1.taiwan.NewsBasket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.no1.taiwan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

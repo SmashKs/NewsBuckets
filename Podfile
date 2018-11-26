@@ -21,7 +21,16 @@ target 'NewsBasket' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  
+
+  pod 'Moya/RxSwift', '~> 12.0.1'
+  pod 'EVReflection/MoyaRxSwift', '~> 5.8.0'
+
+  # For Json
+  pod 'SwiftyJSON', '~> 4.2.0'
+
+  # For Data Storage
+  pod 'RealmSwift', '~> 3.11.2'
+
   target 'DataManager' do
     inherit! :search_paths
     # For RESTful Internet Request
