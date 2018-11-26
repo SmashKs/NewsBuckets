@@ -13,7 +13,7 @@ import Utility
 /// Using prefix name (retrieve), (create), (replace), (release)
 public enum NewsMoyaConfig {
     case retrieveFakeList
-    case createSubscriber
+    case createSubscriber([String: Any])
 }
 
 extension NewsMoyaConfig: TargetType {
@@ -48,7 +48,7 @@ extension NewsMoyaConfig: TargetType {
             case .retrieveFakeList: // Get restful request.
                 return .get
             case .createSubscriber:
-                return .put
+                return .post
         }
     }
 
@@ -56,8 +56,9 @@ extension NewsMoyaConfig: TargetType {
         switch self {
             case .retrieveFakeList: // Doesn't need the parameters.
                 return .requestPlain
-            case .createSubscriber:
-                return .requestPlain
+            case .createSubscriber(let params):
+                return .requestParameters(parameters: ["token": "1234",
+                                                       "firebase_token": "213123"], encoding: JSONEncoding.default)
         }
     }
 

@@ -21,7 +21,7 @@ public class NewsService: RemoteDataService {
     }
 
     public func createSubscriber() -> Completable {
-        var request = rxProvider.request(NewsMoyaConfig.createSubscriber)
+        var request = rxProvider.request(NewsMoyaConfig.createSubscriber([:]))
         #if DEBUG
         request = request.debug()
         #endif

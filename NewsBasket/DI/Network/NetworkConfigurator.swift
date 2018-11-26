@@ -16,7 +16,11 @@ class NetworkConfigurator: Assembly {
         // MARK: - Necessary Objects
 
         container.register(MoyaProvider<NewsMoyaConfig>.self) { _ in
-            MoyaProvider<NewsMoyaConfig>()
+            #if DEBUG
+            return MoyaProvider<NewsMoyaConfig>(plugins: [NetworkLoggerPlugin(verbose: true)])
+            #else
+            return MoyaProvider<NewsMoyaConfig>()
+            #endif
         }
 
         // MARK: - Provide to the others Assembly
