@@ -9,9 +9,9 @@
 import DataManager
 
 class SecondInteractor: SecondInteractorInput {
-    var repository: DataStore!
+    var repository: Repository!
 
-    init(repository data: DataStore) {
+    init(repository data: Repository) {
         repository = data
     }
 }

@@ -15,10 +15,18 @@ public class LocalDataStore: DataStore {
         localRealm = realm
     }
 
-    public func newSubscriber() -> Completable {
-        fatalError("writeInformation(info:) has not been implemented")
+    public func fetch(newses parameters: [String: Any]) -> Completable {
+        fatalError("fetch(newses:) has not been implemented")
     }
-    
+
+    public func new(subscriber parameters: [String: String]) -> Completable {
+        fatalError("new(subscriber:) has not been implemented")
+    }
+
+    public func modify(keyword parameters: [String: String]) -> Completable {
+        fatalError("modify(keyword:) has not been implemented")
+    }
+
     public func fetchFakeList() -> Single<FakeEntity> {
         return localRealm.retrieveFakeList()
     }

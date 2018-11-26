@@ -10,21 +10,21 @@ import DataManager
 import RxSwift
 
 class MainInteractor: MainInteractorInput {
-    var repository: DataStore!
+    var repository: Repository!
 
-    init(repository data: DataStore) {
+    init(repository data: Repository) {
         repository = data
     }
 
     func addSubscriber() -> Completable {
-        return repository.newSubscriber()
+        return repository.add(subscriber: [:])
     }
 
     func getFakeList() -> Single<FakeEntity> {
-        return repository.fetchFakeList()
+        return repository.getFakeList()
     }
 
     func keepInformationEntity(info entity: Info) -> Completable {
-        return repository.persist(info: entity).thruInternet()
+        return repository.keep(info: entity).thruInternet()
     }
 }

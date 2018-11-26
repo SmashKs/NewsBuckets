@@ -23,7 +23,7 @@ class RepositoryConfigurator: Assembly {
 
         // MARK: - Provides to others modules.
 
-        container.register(DataStore.self, name: "repo") {
+        container.register(Repository.self) {
             DataRepository(local: $0.resolve(DataStore.self, name: "local")!,
                            remote: $0.resolve(DataStore.self, name: "remote")!)
         }

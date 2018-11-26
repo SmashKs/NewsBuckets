@@ -15,8 +15,17 @@ public class RemoteDataStore: DataStore {
         self.moyaService = service
     }
 
-    public func newSubscriber() -> Completable {
+    public func fetch(newses parameters: [String: Any]) -> Completable {
+//        return moyaService.retrieveFakeList()
+        fatalError("fetch(info:) has not been implemented")
+    }
+
+    public func new(subscriber parameters: [String: String]) -> Completable {
         return moyaService.createSubscriber()
+    }
+
+    public func modify(keyword parameters: [String: String]) -> Completable {
+        return moyaService.replaceKeywords()
     }
 
     public func fetchFakeList() -> Single<FakeEntity> {

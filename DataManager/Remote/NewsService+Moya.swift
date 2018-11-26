@@ -28,8 +28,12 @@ public class NewsService: RemoteDataService {
         return request.asCompletable()
     }
 
+    public func replaceKeywords() -> Completable {
+        fatalError("replaceKeywords() has not been implemented")
+    }
+
     public func retrieveFakeList() -> RxSwift.Single<FakeEntity> {
-        var request = rxProvider.request(NewsMoyaConfig.retrieveFakeList)
+        var request = rxProvider.request(NewsMoyaConfig.retrieveNewsList)
         #if DEBUG
         request = request.debug()
         #endif

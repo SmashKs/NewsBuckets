@@ -9,5 +9,5 @@
 import DataManager
 
 protocol Interactable: class {
-    var repository: DataStore! { get set }
+    var repository: Repository! { get set }
 }

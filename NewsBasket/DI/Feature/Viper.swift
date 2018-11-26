@@ -14,7 +14,7 @@ protocol ViperInjector: Configurator {
 
 extension ViperInjector {
     var viperProvider: Container {
-        let repo = assembler.resolver.resolve(DataStore.self, name: "repo")!
+        let repo = assembler.resolver.resolve(Repository.self)!
 
         return Container { container in
 
