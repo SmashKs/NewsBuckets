@@ -16,7 +16,7 @@ class MainViewController: UIViewController, MainViewInput {
     var presenter: MainPresenterInput!
     var disposable = DisposeBag()
     @IBOutlet var btnGoToNext: UIButton!
-    let temp = "affdas"
+    let temp = "affdasaaaa"
 
     // MARK: - Life cycle
 

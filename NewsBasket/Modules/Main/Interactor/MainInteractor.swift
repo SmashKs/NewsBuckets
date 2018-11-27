@@ -30,8 +30,9 @@ class MainInteractor: MainInteractorInput {
         return repository
             .getNewsToken()
             .flatMapCompletable { token -> Completable in
-                logw(token)
-                return self.repository.update(token: KeywordP(token.token, firebaseToken, keywords))
+                return self.repository
+                    .update(keyword: KeywordP(token.token, firebaseToken, keywords))
+                    .asCompletable()
             }
     }
 

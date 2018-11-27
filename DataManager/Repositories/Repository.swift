@@ -19,7 +19,7 @@ public protocol Repository {
 
     func getNewsToken() -> Single<Token>
 
-    func update(token parameters: KeywordP) -> Completable
+    func update(token parameters: TokenP) -> Completable
 
     func keep(token parameters: TokenP) -> Completable
 

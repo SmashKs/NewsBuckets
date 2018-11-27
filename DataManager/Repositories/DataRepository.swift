@@ -33,7 +33,7 @@ public class DataRepository: Repository {
         return local.fetchNewsToken()
     }
 
-    public func update(token parameters: KeywordP) -> Completable {
+    public func update(token parameters: TokenP) -> Completable {
         return local.modify(token: parameters)
     }
 

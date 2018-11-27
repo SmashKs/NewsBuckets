@@ -18,33 +18,15 @@ public class NewsRealm: LocalDataService {
     }
 
     public func retrieveNewsToken() -> Single<Token> {
-        return Single.just(realm.objects(TokenObj.self))
-            .map { obj -> TokenEntity in
-                return TokenEntity()
-            }
+        fatalError("retrieveNewsToken() has not been implemented")
     }
 
     public func replace(token object: TokenObj) -> Completable {
-        return Completable.create { [weak self] completable in
-            guard let strongSelf = self else {
-                return Disposables.create()
-            }
-
-            do {
-                try strongSelf.realm.write {
-                    strongSelf.realm.add(object)
-                }
-                completable(.completed)
-            } catch {
-                completable(.error(error))
-            }
-
-            return Disposables.create()
-        }
+        fatalError("replace(token:) has not been implemented")
     }
 
     public func create(token object: TokenObj) -> Completable {
-        return replace(token: object)
+        fatalError("create(token:) has not been implemented")
     }
 
     public func retrieveFakeList() -> Single<FakeEntity> {

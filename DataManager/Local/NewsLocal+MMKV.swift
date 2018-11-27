@@ -8,6 +8,7 @@
 
 import RxSwift
 import MMKV
+import Utility
 
 public class NewsMMKV: LocalDataService {
     private var mmkv: MMKV
@@ -17,15 +18,39 @@ public class NewsMMKV: LocalDataService {
     }
 
     public func retrieveNewsToken() -> Single<Token> {
-        fatalError("retrieveNewsToken() has not been implemented")
+        return Single<Token>.create { single in
+            let res = Token()
+            if let firebaseToken = self.mmkv.object(of: NSString.self, forKey: "firebase token") as? String {
+                res.firebaseToken = firebaseToken
+            }
+            if let token = self.mmkv.object(of: NSString.self, forKey: "token") as? String {
+                res.token = token
+            }
+            single(.success(res))
+
+            return Disposables.create()
+        }
     }
 
     public func replace(token object: TokenObj) -> Completable {
-        fatalError("replace(token:) has not been implemented")
+        return create(token: object)
     }
 
     public func create(token object: TokenObj) -> Completable {
-        fatalError("create(token:) has not been implemented")
+        return Completable.create { completable in
+            var res = false
+
+            if object.token != defaultString {
+                res = res || self.mmkv.set(_: object.token, forKey: "token")
+            }
+            if object.firebaseToken != defaultString {
+                res = res || self.mmkv.set(_: object.firebaseToken, forKey: "firebase token")
+            }
+
+            res ? completable(.completed) : completable(.error(RxError.noElements))
+
+            return Disposables.create()
+        }
     }
 
     public func retrieveFakeList() -> Single<FakeEntity> {

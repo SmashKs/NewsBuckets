@@ -30,7 +30,7 @@ public class LocalDataStore: DataStore {
     }
 
     public func fetchNewsToken() -> Single<Token> {
-        return localRealm.retrieveNewsToken()
+        return localMMKV.retrieveNewsToken()
     }
 
     public func modify(token parameters: Parameters?) -> Completable {
@@ -43,7 +43,7 @@ public class LocalDataStore: DataStore {
             obj.firebaseToken = firebaseToken
         }
 
-        return localRealm.replace(token: obj)
+        return localMMKV.replace(token: obj)
     }
 
     public func persist(token parameters: Parameters?) -> Completable {
@@ -56,7 +56,7 @@ public class LocalDataStore: DataStore {
             obj.firebaseToken = firebaseToken
         }
 
-        return localRealm.replace(token: obj)
+        return localMMKV.replace(token: obj)
     }
 
     public func fetchFakeList() -> Single<FakeEntity> {
