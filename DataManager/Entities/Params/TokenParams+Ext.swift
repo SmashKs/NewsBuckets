@@ -12,9 +12,6 @@ public class TokenParams: Parameters {
     var token = defaultString
     var firebaseToken = defaultString
 
-    public init() {
-    }
-
     public init(_ token: String = defaultString, _ firebaseToken: String = defaultString) {
         self.token = token
         self.firebaseToken = firebaseToken

@@ -11,10 +11,6 @@ import Utility
 public class KeywordParams: TokenParams {
     var keywords = defaultString
 
-    public override init() {
-        super.init()
-    }
-
     public init(_ token: String, _ firebaseToken: String, _ keywords: String) {
         super.init(token, firebaseToken)
         self.keywords = keywords
