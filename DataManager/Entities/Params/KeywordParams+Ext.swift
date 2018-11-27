@@ -6,6 +6,8 @@
 //  Copyright © 2018 Jieyi Wu. All rights reserved.
 //
 
+import Utility
+
 public class KeywordParams: TokenParams {
     var keywords = defaultString
 

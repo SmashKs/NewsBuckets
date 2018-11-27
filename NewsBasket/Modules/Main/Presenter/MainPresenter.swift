@@ -17,13 +17,13 @@ class MainPresenter: MainPresenterInput {
     func viewIsReady() {
     }
 
-    func addSubscriber(token: String, firebaseToken: String) {
+    func addSubscriber(firebaseToken: String) {
         interactor
-            .addSubscriber(token, firebaseToken)
+            .addSubscriber(firebaseToken)
             .subscribe { completable in
                 switch completable {
                     case .completed:
-                        logw("finished!!")
+                        logw("finished!!!!!!!")
                     case .error(let error):
                         loge(error)
                 }

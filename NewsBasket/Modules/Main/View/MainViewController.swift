@@ -6,6 +6,7 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
+import FirebaseInstanceID
 import RxCocoa
 import RxSwift
 import UIKit
@@ -14,7 +15,7 @@ import Utility
 class MainViewController: UIViewController, MainViewInput {
     var presenter: MainPresenterInput!
     var disposable = DisposeBag()
-    @IBOutlet weak var btnGoToNext: UIButton!
+    @IBOutlet var btnGoToNext: UIButton!
 
     // MARK: - Life cycle
 
@@ -31,8 +32,13 @@ class MainViewController: UIViewController, MainViewInput {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        presenter.getList()
-        presenter.addSubscriber(token: "12312", firebaseToken: "213123")
+        InstanceID.instanceID().instanceID { res, error in
+            if let error = error {
+                loge(error)
+            } else if let res = res {
+                self.presenter.addSubscriber(firebaseToken: res.token)
+            }
+        }
     }
 
     // MARK: - MainViewInput

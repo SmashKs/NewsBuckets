@@ -7,10 +7,11 @@
 //
 
 import EVReflection
+import Utility
 
 public class TokenEntity: EVObject {
-    var token: String? = nil
-    var firebaseToken: String? = nil
+    public var token = defaultString
+    public var firebaseToken = defaultString
 }
 
 extension TokenEntity: Entity {

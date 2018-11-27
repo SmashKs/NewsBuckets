@@ -9,6 +9,7 @@
 import EVReflection
 import Moya
 import RxSwift
+import Utility
 
 public class NewsService: RemoteDataService {
     private var provider: MoyaProvider<NewsMoyaConfig>
@@ -20,16 +21,32 @@ public class NewsService: RemoteDataService {
         self.provider = provider
     }
 
-    public func createSubscriber(parameters: [String: Any]) -> Completable {
+    public func createSubscriber(parameters: [String: Any]) -> Single<Token> {
         var request = rxProvider.request(NewsMoyaConfig.createSubscriber(parameters))
         #if DEBUG
         request = request.debug()
         #endif
-        return request.asCompletable()
+        return request.do(onNext: {
+            if (String($0.statusCode).flatMap {
+                Int(String($0))
+            }[0] != 2) {
+                throw MoyaError.statusCode($0)
+            }
+        }).Rmap(to: Token.self)
     }
 
-    public func replaceKeywords(parameters: [String: Any]) -> Completable {
-        fatalError("replaceKeywords() has not been implemented")
+    public func replaceKeywords(parameters: [String: Any]) -> Single<Token> {
+        var request = rxProvider.request(NewsMoyaConfig.replaceSubscriber(parameters))
+        #if DEBUG
+        request = request.debug()
+        #endif
+        return request.do(onNext: {
+            if (String($0.statusCode).flatMap {
+                Int(String($0))
+            }[0] != 2) {
+                throw MoyaError.statusCode($0)
+            }
+        }).Rmap(to: Token.self)
     }
 
     public func retrieveFakeList() -> RxSwift.Single<FakeEntity> {

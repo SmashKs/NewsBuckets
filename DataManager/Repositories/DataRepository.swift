@@ -21,11 +21,11 @@ public class DataRepository: Repository {
         return remote.fetch(newses: parameters)
     }
 
-    public func add(subscriber parameters: TokenP?) -> Completable {
+    public func add(subscriber parameters: TokenP?) -> Single<Token> {
         return remote.new(subscriber: parameters)
     }
 
-    public func update(keyword parameters: KeywordP?) -> Completable {
+    public func update(keyword parameters: KeywordP?) -> Single<Token> {
         return remote.modify(keyword: parameters)
     }
 
@@ -33,7 +33,7 @@ public class DataRepository: Repository {
         return local.fetchNewsToken()
     }
 
-    public func update(token parameters: TokenP) -> Completable {
+    public func update(token parameters: KeywordP) -> Completable {
         return local.modify(token: parameters)
     }
 

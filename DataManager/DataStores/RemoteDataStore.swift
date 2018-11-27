@@ -20,14 +20,14 @@ public class RemoteDataStore: DataStore {
         fatalError("fetch(info:) has not been implemented")
     }
 
-    public func new(subscriber parameters: Parameters?) -> Completable {
+    public func new(subscriber parameters: Parameters?) -> Single<Token> {
         guard let params = parameters?.toDict() else {
             fatalError("There's no parameter")
         }
         return moyaService.createSubscriber(parameters: params)
     }
 
-    public func modify(keyword parameters: Parameters?) -> Completable {
+    public func modify(keyword parameters: Parameters?) -> Single<Token> {
         guard let params = parameters?.toDict() else {
             fatalError("There's no parameter")
         }

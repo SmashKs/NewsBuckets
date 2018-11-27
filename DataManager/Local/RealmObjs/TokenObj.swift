@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import Utility
 
 public class TokenObj: Object {
     @objc dynamic var token = defaultString

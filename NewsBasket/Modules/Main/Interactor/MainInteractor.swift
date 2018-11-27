@@ -8,6 +8,7 @@
 
 import DataManager
 import RxSwift
+import Utility
 
 class MainInteractor: MainInteractorInput {
     var repository: Repository!
@@ -16,8 +17,22 @@ class MainInteractor: MainInteractorInput {
         repository = data
     }
 
-    func addSubscriber(_ token: String, _ firebaseToken: String) -> Completable {
-        return repository.add(subscriber: TokenP(token, firebaseToken))
+    func addSubscriber(_ firebaseToken: String) -> Completable {
+        return repository
+            .add(subscriber: TokenP(defaultString, firebaseToken))
+            .flatMapCompletable { token -> Completable in
+                logw(token)
+                return self.repository.keep(token: TokenP(token.token, firebaseToken))
+            }
+    }
+
+    func updateSubscriber(_ firebaseToken: String, _ keywords: String) -> Completable {
+        return repository
+            .getNewsToken()
+            .flatMapCompletable { token -> Completable in
+                logw(token)
+                return self.repository.update(token: KeywordP(token.token, firebaseToken, keywords))
+            }
     }
 
     func getFakeList() -> Single<FakeEntity> {

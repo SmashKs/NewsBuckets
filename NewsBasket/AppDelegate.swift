@@ -8,7 +8,6 @@
 
 import FirebaseCore
 import FirebaseMessaging
-import FirebaseInstanceID
 import SwiftyBeaver
 import UIKit
 import UserNotifications

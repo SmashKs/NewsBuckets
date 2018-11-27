@@ -19,11 +19,11 @@ public class LocalDataStore: DataStore {
         fatalError("fetch(newses:) has not been implemented")
     }
 
-    public func new(subscriber parameters: Parameters?) -> Completable {
+    public func new(subscriber parameters: Parameters?) -> Single<Token> {
         fatalError("new(subscriber:) has not been implemented")
     }
 
-    public func modify(keyword parameters: Parameters?) -> Completable {
+    public func modify(keyword parameters: Parameters?) -> Single<Token> {
         fatalError("modify(keyword:) has not been implemented")
     }
 

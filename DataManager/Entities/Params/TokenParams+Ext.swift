@@ -6,6 +6,8 @@
 //  Copyright © 2018 Jieyi Wu. All rights reserved.
 //
 
+import Utility
+
 public class TokenParams: Parameters {
     var token = defaultString
     var firebaseToken = defaultString
@@ -13,7 +15,7 @@ public class TokenParams: Parameters {
     public init() {
     }
 
-    public init(_ token: String, _ firebaseToken: String) {
+    public init(_ token: String = defaultString, _ firebaseToken: String = defaultString) {
         self.token = token
         self.firebaseToken = firebaseToken
     }

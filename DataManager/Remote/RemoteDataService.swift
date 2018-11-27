@@ -9,9 +9,9 @@
 import RxSwift
 
 public protocol RemoteDataService {
-    func createSubscriber(parameters: [String: Any]) -> Completable
+    func createSubscriber(parameters: [String: Any]) -> Single<Token>
 
-    func replaceKeywords(parameters: [String: Any]) -> Completable
+    func replaceKeywords(parameters: [String: Any]) -> Single<Token>
 
     func retrieveFakeList() -> Single<FakeEntity>
 }

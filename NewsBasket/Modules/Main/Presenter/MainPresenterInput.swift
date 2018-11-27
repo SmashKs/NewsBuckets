@@ -15,7 +15,7 @@ protocol MainPresenterInput: Presentable {
 
     func viewIsReady()
 
-    func addSubscriber(token: String, firebaseToken: String)
+    func addSubscriber(firebaseToken: String)
 
     func getList()
 
