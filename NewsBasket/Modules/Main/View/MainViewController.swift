@@ -26,8 +26,8 @@ class MainViewController: UIViewController, MainViewInput {
         presenter.viewIsReady()
 
         btnGoToNext.rx.tap.subscribe(onNext: {
-//            self.presenter.gotoNext(vc: self)
-            self.presenter.updateSubscriber(firebaseToken: self.temp, keywords: "123,321,321")
+            self.presenter.gotoNext(vc: self)
+//            self.presenter.updateSubscriber(firebaseToken: self.temp, keywords: "123,321,321")
         }).disposed(by: disposable)
     }
 

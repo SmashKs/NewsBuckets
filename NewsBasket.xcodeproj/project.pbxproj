@@ -22,6 +22,7 @@
 		6070034FCDD297A51CEB6FD7 /* ObjectExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607006FB60AC398EB3DB6CBF /* ObjectExt.swift */; };
 		607003E106FF48C8EB4A1E84 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607000BB8489838900EE7066 /* SecondViewController.swift */; };
 		607003F61EE7D9ADCBC74C97 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700DB01EA42BA00CB691EF /* Constants.swift */; };
+		607004078B6FB4956D981CA8 /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607009C3D19014C48909D557 /* KeywordCell.swift */; };
 		607004372A786B2943F91583 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607007E40238CBF8B34C1113 /* MainInteractor.swift */; };
 		6070044523CCDAA54E76A2CC /* CommonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607007510C7F1AA43A80B7D6 /* CommonConfigurator.swift */; };
 		607005BAD722A0907AC3CC59 /* SecondRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60700FC7A31C07586AEFADCD /* SecondRouterInput.swift */; };
@@ -151,6 +152,7 @@
 		607009AC14566786BAFB7BCB /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		607009B4FA8C2D862B360805 /* SecondInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondInitializer.swift; sourceTree = "<group>"; };
 		607009B5E426EDF8CED8C395 /* TokenParams+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TokenParams+Ext.swift"; sourceTree = "<group>"; };
+		607009C3D19014C48909D557 /* KeywordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordCell.swift; sourceTree = "<group>"; };
 		60700A46DE808EE7AF35DE8A /* TokenObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenObj.swift; sourceTree = "<group>"; };
 		60700A558B632C9919DC003D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		60700A6D484BFAA7E4976CA1 /* LocalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
@@ -239,6 +241,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		607000710CF3F30D92390075 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				60700343AF31696A18FE6B9F /* TableCell */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		6070014DE1A451A6E1A59661 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,14 @@
 				60700219CED264528FF07D55 /* TokenEntity+Ext.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		60700343AF31696A18FE6B9F /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				607009C3D19014C48909D557 /* KeywordCell.swift */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 		607003B699008BC4EE1B745C /* DataStores */ = {
@@ -668,6 +686,7 @@
 				607000E2082E45AD446C66A7 /* GoogleService-Info.plist */,
 				607006AC088A0EB6263764E8 /* DataManager */,
 				607009FF2AC6516F87FDA6BD /* Services */,
+				607000710CF3F30D92390075 /* Widget */,
 			);
 			path = NewsBasket;
 			sourceTree = "<group>";
@@ -1017,6 +1036,7 @@
 				60700725FB1D52CD9ED1BBA9 /* SecondConfigurator.swift in Sources */,
 				60700D3507C56C01A8AAE4F8 /* CoreData+News.xcdatamodeld in Sources */,
 				607009BB549353FD4C501A1A /* NewsMessagingDelegate.swift in Sources */,
+				607004078B6FB4956D981CA8 /* KeywordCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
