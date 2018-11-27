@@ -13,9 +13,15 @@ import RxSwift
 public protocol Repository {
     func get(newses parameters: [String: Any]) -> Completable
 
-    func add(subscriber parameters: TokenParams?) -> Completable
+    func add(subscriber parameters: TokenP?) -> Completable
 
-    func update(keyword parameters: keywordParams?) -> Completable
+    func update(keyword parameters: KeywordP?) -> Completable
+
+    func getNewsToken() -> Single<Token>
+
+    func update(token parameters: TokenP) -> Completable
+
+    func keep(token parameters: TokenP) -> Completable
 
     func getFakeList() -> Single<FakeEntity>
 

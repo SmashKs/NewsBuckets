@@ -12,7 +12,7 @@ import RxSwift
 /// The interactor between data layer and presentation layer.
 /// Using prefix name (get), (add), (update), (delete), (keep)
 protocol MainInteractorInput: Interactable {
-    func addSubscriber() -> Completable
+    func addSubscriber(_ token: String, _ firebaseToken: String) -> Completable
 
     func getFakeList() -> Single<FakeEntity>
 

@@ -67,11 +67,9 @@ extension NewsMoyaConfig: TargetType {
             case .retrieveNewsList: // Doesn't need the parameters.
                 return .requestPlain
             case .createSubscriber(let params):
-                return .requestParameters(parameters: ["token": "1234",
-                                                       "firebase_token": "213123"], encoding: JSONEncoding.default)
+                return .requestParameters(parameters: params, encoding: JSONEncoding.default)
             case .replaceSubscriber(let params):
-                return .requestParameters(parameters: ["firebase_token": "213123",
-                                                       "keywords": ""], encoding: JSONEncoding.default)
+                return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
     }
 

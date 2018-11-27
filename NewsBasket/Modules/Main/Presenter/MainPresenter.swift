@@ -17,9 +17,9 @@ class MainPresenter: MainPresenterInput {
     func viewIsReady() {
     }
 
-    func addSubscriber() {
+    func addSubscriber(token: String, firebaseToken: String) {
         interactor
-            .addSubscriber()
+            .addSubscriber(token, firebaseToken)
             .subscribe { completable in
                 switch completable {
                     case .completed:

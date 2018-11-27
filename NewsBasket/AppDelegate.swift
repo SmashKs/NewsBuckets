@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init the log module.
         let console = ConsoleDestination()
         console.format = loggerFormat
+        console.levelString.verbose = "💜 VERBOSE"
+        console.levelString.debug = "💚 DEBUG"
+        console.levelString.info = "💙 INFO"
+        console.levelString.warning = "💛 WARNING"
+        console.levelString.error = "❤️ ERROR"
         swiftyLogger.addDestination(console)
 
         return true

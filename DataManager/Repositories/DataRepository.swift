@@ -21,12 +21,24 @@ public class DataRepository: Repository {
         return remote.fetch(newses: parameters)
     }
 
-    public func add(subscriber parameters: TokenParams?) -> Completable {
+    public func add(subscriber parameters: TokenP?) -> Completable {
         return remote.new(subscriber: parameters)
     }
 
-    public func update(keyword parameters: keywordParams?) -> Completable {
+    public func update(keyword parameters: KeywordP?) -> Completable {
         return remote.modify(keyword: parameters)
+    }
+
+    public func getNewsToken() -> Single<Token> {
+        return local.fetchNewsToken()
+    }
+
+    public func update(token parameters: TokenP) -> Completable {
+        return local.modify(token: parameters)
+    }
+
+    public func keep(token parameters: TokenP) -> Completable {
+        return local.persist(token: parameters)
     }
 
     public func getFakeList() -> Single<FakeEntity> {

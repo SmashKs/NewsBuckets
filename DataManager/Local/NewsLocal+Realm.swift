@@ -17,6 +17,32 @@ public class NewsRealm: LocalDataService {
         self.realm = realm
     }
 
+    public func retrieveNewsToken() -> Single<Token> {
+        return Single.just(realm.objects(TokenObj.self))
+            .map { obj -> TokenEntity in
+                return TokenEntity()
+            }
+    }
+
+    public func replace(token object: TokenObj) -> Completable {
+        return Completable.create {
+            do {
+                try self.realm.write {
+                    self.realm.add(TokenObj())
+                }
+                $0(.completed)
+            } catch {
+                $0(.error(error))
+            }
+
+            return Disposables.create()
+        }
+    }
+
+    public func create(token object: TokenObj) -> Completable {
+        return replace(token: object)
+    }
+
     public func retrieveFakeList() -> Single<FakeEntity> {
         // FIXME: (jieyi 2018/05/22) Fix the object inheritance.
         return Single.just(realm.objects(TempObj.self))

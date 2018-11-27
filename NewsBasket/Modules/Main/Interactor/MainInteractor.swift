@@ -16,8 +16,8 @@ class MainInteractor: MainInteractorInput {
         repository = data
     }
 
-    func addSubscriber() -> Completable {
-        return repository.add(subscriber: TokenParams())
+    func addSubscriber(_ token: String, _ firebaseToken: String) -> Completable {
+        return repository.add(subscriber: TokenP(token, firebaseToken))
     }
 
     func getFakeList() -> Single<FakeEntity> {

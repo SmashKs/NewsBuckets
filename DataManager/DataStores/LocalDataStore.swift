@@ -27,6 +27,36 @@ public class LocalDataStore: DataStore {
         fatalError("modify(keyword:) has not been implemented")
     }
 
+    public func fetchNewsToken() -> Single<Token> {
+        return localRealm.retrieveNewsToken()
+    }
+
+    public func modify(token parameters: Parameters?) -> Completable {
+        let obj = TokenObj()
+
+        if let param = parameters?.toDict(),
+           let token = param["token"] as? String,
+           let firebaseToken = param["token"] as? String {
+            obj.token = token
+            obj.firebaseToken = firebaseToken
+        }
+
+        return localRealm.replace(token: obj)
+    }
+
+    public func persist(token parameters: Parameters?) -> Completable {
+        let obj = TokenObj()
+
+        if let param = parameters?.toDict(),
+           let token = param["token"] as? String,
+           let firebaseToken = param["token"] as? String {
+            obj.token = token
+            obj.firebaseToken = firebaseToken
+        }
+
+        return localRealm.replace(token: obj)
+    }
+
     public func fetchFakeList() -> Single<FakeEntity> {
         return localRealm.retrieveFakeList()
     }

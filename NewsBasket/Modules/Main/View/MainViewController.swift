@@ -32,7 +32,7 @@ class MainViewController: UIViewController, MainViewInput {
         super.viewDidAppear(animated)
 
 //        presenter.getList()
-        presenter.addSubscriber()
+        presenter.addSubscriber(token: "12312", firebaseToken: "213123")
     }
 
     // MARK: - MainViewInput

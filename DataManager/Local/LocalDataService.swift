@@ -9,6 +9,12 @@
 import RxSwift
 
 public protocol LocalDataService {
+    func retrieveNewsToken() -> Single<Token>
+
+    func replace(token object: TokenObj) -> Completable
+
+    func create(token object: TokenObj) -> Completable
+
     func retrieveFakeList() -> Single<FakeEntity>
 
     func update(info entity: Info) -> Completable

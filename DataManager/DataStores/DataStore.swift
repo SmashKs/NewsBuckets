@@ -17,6 +17,12 @@ public protocol DataStore {
 
     func modify(keyword parameters: Parameters?) -> Completable
 
+    func fetchNewsToken() -> Single<Token>
+
+    func modify(token parameters: Parameters?) -> Completable
+
+    func persist(token parameters: Parameters?) -> Completable
+
     func fetchFakeList() -> Single<FakeEntity>
 
     func persist(info entity: Info?) -> Completable

@@ -34,6 +34,18 @@ public class RemoteDataStore: DataStore {
         return moyaService.replaceKeywords(parameters: params)
     }
 
+    public func fetchNewsToken() -> Single<Token> {
+        fatalError("fetchNewsToken() has not been implemented")
+    }
+
+    public func modify(token parameters: Parameters?) -> Completable {
+        fatalError("modify(token:) has not been implemented")
+    }
+
+    public func persist(token parameters: Parameters?) -> Completable {
+        fatalError("presist(token:) has not been implemented")
+    }
+
     public func fetchFakeList() -> Single<FakeEntity> {
         return moyaService.retrieveFakeList()
     }
