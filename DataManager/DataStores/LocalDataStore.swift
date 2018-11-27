@@ -10,9 +10,11 @@ import RxSwift
 
 public class LocalDataStore: DataStore {
     private var localRealm: LocalDataService!
+    private var localMMKV: LocalDataService!
 
-    public init(realm: LocalDataService) {
+    public init(realm: LocalDataService, mmkv: LocalDataService) {
         localRealm = realm
+        localMMKV = mmkv
     }
 
     public func fetch(newses parameters: [String: Any]) -> Completable {

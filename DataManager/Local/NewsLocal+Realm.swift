@@ -25,14 +25,18 @@ public class NewsRealm: LocalDataService {
     }
 
     public func replace(token object: TokenObj) -> Completable {
-        return Completable.create {
+        return Completable.create { [weak self] completable in
+            guard let strongSelf = self else {
+                return Disposables.create()
+            }
+
             do {
-                try self.realm.write {
-                    self.realm.add(TokenObj())
+                try strongSelf.realm.write {
+                    strongSelf.realm.add(object)
                 }
-                $0(.completed)
+                completable(.completed)
             } catch {
-                $0(.error(error))
+                completable(.error(error))
             }
 
             return Disposables.create()

@@ -30,6 +30,7 @@ target 'NewsBasket' do
 
   # For Data Storage
   pod 'RealmSwift', '~> 3.11.2'
+  pod 'MMKV'
 
   target 'DataManager' do
     inherit! :search_paths
@@ -43,6 +44,7 @@ target 'NewsBasket' do
     # For Data Storage
     pod 'Realm', '~> 3.11.2'
     pod 'RealmSwift', '~> 3.11.2'
+    pod 'MMKV'
   end
   
   target 'Utility' do

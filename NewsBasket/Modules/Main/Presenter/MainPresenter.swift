@@ -6,8 +6,8 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
-import Utility
 import RxSwift
+import Utility
 
 class MainPresenter: MainPresenterInput {
     weak var view: MainViewInput!
@@ -28,6 +28,20 @@ class MainPresenter: MainPresenterInput {
                         loge(error)
                 }
             }.disposed(by: view.disposable)
+    }
+
+    func updateSubscriber(firebaseToken: String, keywords: String) {
+        interactor
+            .updateSubscriber(firebaseToken, keywords)
+            .subscribe { completable in
+                switch completable {
+                    case .completed:
+                        logw("Finished !!!XXX")
+                    case .error(let error):
+                        loge(error)
+                }
+            }
+            .disposed(by: view.disposable)
     }
 
     func getList() {

@@ -16,6 +16,7 @@ class MainViewController: UIViewController, MainViewInput {
     var presenter: MainPresenterInput!
     var disposable = DisposeBag()
     @IBOutlet var btnGoToNext: UIButton!
+    let temp = "affdas"
 
     // MARK: - Life cycle
 
@@ -25,18 +26,21 @@ class MainViewController: UIViewController, MainViewInput {
         presenter.viewIsReady()
 
         btnGoToNext.rx.tap.subscribe(onNext: {
-            self.presenter.gotoNext(vc: self)
+//            self.presenter.gotoNext(vc: self)
+            self.presenter.updateSubscriber(firebaseToken: self.temp, keywords: "123,321,321")
         }).disposed(by: disposable)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        logw(NSHomeDirectory())
+        
         InstanceID.instanceID().instanceID { res, error in
             if let error = error {
                 loge(error)
             } else if let res = res {
-                self.presenter.addSubscriber(firebaseToken: res.token)
+                self.presenter.addSubscriber(firebaseToken: self.temp)
             }
         }
     }
