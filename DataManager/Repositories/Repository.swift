@@ -19,6 +19,12 @@ public protocol Repository {
 
     func getNewsToken() -> Single<Token>
 
+    func getKeywords() -> Single<[Keyword]>
+
+    func add(keyword parameters: KeywordP?) -> Completable
+
+    func delete(keyword parameters: KeywordP?) -> Completable
+
     func update(token parameters: TokenP) -> Completable
 
     func keep(token parameters: TokenP) -> Completable

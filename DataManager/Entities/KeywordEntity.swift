@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jieyi Wu. All rights reserved.
 //
 
-class KeywordEntity {
+public class KeywordEntity {
     var keyword: String? = nil
 
     init(_ keyword: String?) {
@@ -14,4 +14,4 @@ class KeywordEntity {
     }
 }
 
-typealias Keyword = KeywordEntity
+public typealias Keyword = KeywordEntity

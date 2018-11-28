@@ -8,6 +8,7 @@
 
 import RealmSwift
 import RxSwift
+import Utility
 
 public class NewsRealm: LocalDataService {
     private var realm: Realm
@@ -16,6 +17,8 @@ public class NewsRealm: LocalDataService {
     public init(_ realm: Realm) {
         self.realm = realm
     }
+
+    // MARK: - Unsupported methods
 
     public func retrieveNewsToken() -> Single<Token> {
         fatalError("retrieveNewsToken() has not been implemented")
@@ -27,6 +30,29 @@ public class NewsRealm: LocalDataService {
 
     public func create(token object: TokenObj) -> Completable {
         fatalError("create(token:) has not been implemented")
+    }
+
+    // MARK: - For local keywords
+
+    public func retrieveNewsKeywords() -> Single<[Keyword]> {
+        return Single.create { single in
+            var list = Array(self.realm.objects(KeywordObj.self))
+                .map { obj in
+                    Keyword(obj.keyword)
+                }
+
+            single(.success(list))
+
+            return Disposables.create()
+        }
+    }
+
+    public func create(keyword object: KeywordObj) -> Completable {
+        fatalError("createKeyword(keyword:) has not been implemented")
+    }
+
+    public func release(keyword object: KeywordObj) -> Completable {
+        fatalError("release(keyword:) has not been implemented")
     }
 
     public func retrieveFakeList() -> Single<FakeEntity> {

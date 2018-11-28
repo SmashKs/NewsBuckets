@@ -34,15 +34,14 @@ class MainViewController: UIViewController, MainViewInput {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        logw(NSHomeDirectory())
-        
-        InstanceID.instanceID().instanceID { res, error in
-            if let error = error {
-                loge(error)
-            } else if let res = res {
-                self.presenter.addSubscriber(firebaseToken: self.temp)
-            }
-        }
+//        InstanceID.instanceID().instanceID { res, error in
+//            if let error = error {
+//                loge(error)
+//            } else if let res = res {
+//                self.presenter.addSubscriber(firebaseToken: self.temp)
+//            }
+//        }
+        presenter.getList()
     }
 
     // MARK: - MainViewInput

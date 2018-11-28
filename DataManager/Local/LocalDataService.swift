@@ -15,6 +15,12 @@ public protocol LocalDataService {
 
     func create(token object: TokenObj) -> Completable
 
+    func retrieveNewsKeywords() -> Single<[Keyword]>
+
+    func create(keyword object: KeywordObj) -> Completable
+
+    func release(keyword object: KeywordObj) -> Completable
+
     func retrieveFakeList() -> Single<FakeEntity>
 
     func update(info entity: Info) -> Completable

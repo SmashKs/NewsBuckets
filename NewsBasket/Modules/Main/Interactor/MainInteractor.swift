@@ -36,6 +36,10 @@ class MainInteractor: MainInteractorInput {
             }
     }
 
+    func getList() -> Single<[Keyword]> {
+        return repository.getKeywords()
+    }
+
     func getFakeList() -> Single<FakeEntity> {
         return repository.getFakeList()
     }

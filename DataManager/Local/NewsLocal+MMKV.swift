@@ -53,6 +53,20 @@ public class NewsMMKV: LocalDataService {
         }
     }
 
+    // MARK: - Unsupported methods
+
+    public func retrieveNewsKeywords() -> Single<Array<Keyword>> {
+        fatalError("retrieveNewsKeywords() has not been implemented")
+    }
+
+    public func create(keyword object: KeywordObj) -> Completable {
+        fatalError("createKeyword(keyword:) has not been implemented")
+    }
+
+    public func release(keyword object: KeywordObj) -> Completable {
+        fatalError("release(keyword:) has not been implemented")
+    }
+
     public func retrieveFakeList() -> Single<FakeEntity> {
         fatalError("retrieveFakeList() has not been implemented")
     }

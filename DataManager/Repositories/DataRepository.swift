@@ -33,6 +33,18 @@ public class DataRepository: Repository {
         return local.fetchNewsToken()
     }
 
+    public func getKeywords() -> Single<[Keyword]> {
+        return local.fetchNewsKeywords()
+    }
+
+    public func add(keyword parameters: KeywordP?) -> Completable {
+        fatalError("add(keyword:) has not been implemented")
+    }
+
+    public func delete(keyword parameters: KeywordP?) -> Completable {
+        fatalError("delete(keyword:) has not been implemented")
+    }
+
     public func update(token parameters: TokenP) -> Completable {
         return local.modify(token: parameters)
     }

@@ -33,6 +33,18 @@ public class LocalDataStore: DataStore {
         return localMMKV.retrieveNewsToken()
     }
 
+    public func fetchNewsKeywords() -> Single<[Keyword]> {
+        return localRealm.retrieveNewsKeywords()
+    }
+
+    public func new(keyword object: KeywordObj) -> Completable {
+        fatalError("new(keyword:) has not been implemented")
+    }
+
+    public func remove(keyword object: KeywordObj) -> Completable {
+        fatalError("remove(keyword:) has not been implemented")
+    }
+
     public func modify(token parameters: Parameters?) -> Completable {
         let obj = TokenObj()
 
