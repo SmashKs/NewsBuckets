@@ -36,7 +36,7 @@ class MainInteractor: MainInteractorInput {
             }
     }
 
-    func getList() -> Single<[Keyword]> {
+    func getKeywords() -> Single<[Keyword]> {
         return repository.getKeywords()
     }
 

@@ -37,12 +37,26 @@ public class LocalDataStore: DataStore {
         return localRealm.retrieveNewsKeywords()
     }
 
-    public func new(keyword object: KeywordObj) -> Completable {
-        fatalError("new(keyword:) has not been implemented")
+    public func new(keyword parameters: Parameters?) -> Completable {
+        let key = KeywordObj()
+
+        if let params = parameters?.toDict(),
+           let keyword = params["keywords"] as? String {
+            key.keyword = keyword
+        }
+
+        return localRealm.create(keyword: key)
     }
 
-    public func remove(keyword object: KeywordObj) -> Completable {
-        fatalError("remove(keyword:) has not been implemented")
+    public func remove(keyword parameters: Parameters?) -> Completable {
+        let key = KeywordObj()
+
+        if let params = parameters?.toDict(),
+           let keyword = params["keywords"] as? String {
+            key.keyword = keyword
+        }
+
+        return localRealm.release(keyword: key)
     }
 
     public func modify(token parameters: Parameters?) -> Completable {
@@ -76,6 +90,6 @@ public class LocalDataStore: DataStore {
     }
 
     public func persist(info entity: Info?) -> Completable {
-        return localRealm.update(info: entity!)
+        return localRealm.replace(info: entity!)
     }
 }

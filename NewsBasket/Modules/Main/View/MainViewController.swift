@@ -13,10 +13,10 @@ import UIKit
 import Utility
 
 class MainViewController: UIViewController, MainViewInput {
+    @IBOutlet var btnGoToNext: UIButton!
+
     var presenter: MainPresenterInput!
     var disposable = DisposeBag()
-    @IBOutlet var btnGoToNext: UIButton!
-    let temp = "affdasaaaa"
 
     // MARK: - Life cycle
 
@@ -34,14 +34,14 @@ class MainViewController: UIViewController, MainViewInput {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        InstanceID.instanceID().instanceID { res, error in
-//            if let error = error {
-//                loge(error)
-//            } else if let res = res {
-//                self.presenter.addSubscriber(firebaseToken: self.temp)
-//            }
-//        }
-        presenter.getList()
+        InstanceID.instanceID().instanceID { res, error in
+            if let error = error {
+                loge(error)
+            } else if let res = res {
+                self.presenter.addSubscriber(firebaseToken: res.token)
+            }
+        }
+//        presenter.getList()
     }
 
     // MARK: - MainViewInput

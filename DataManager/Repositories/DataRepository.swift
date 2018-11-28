@@ -38,11 +38,11 @@ public class DataRepository: Repository {
     }
 
     public func add(keyword parameters: KeywordP?) -> Completable {
-        fatalError("add(keyword:) has not been implemented")
+        return local.new(keyword: parameters)
     }
 
     public func delete(keyword parameters: KeywordP?) -> Completable {
-        fatalError("delete(keyword:) has not been implemented")
+        return local.remove(keyword: parameters)
     }
 
     public func update(token parameters: TokenP) -> Completable {

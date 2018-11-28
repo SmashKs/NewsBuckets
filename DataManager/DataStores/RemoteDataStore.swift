@@ -38,11 +38,11 @@ public class RemoteDataStore: DataStore {
         fatalError("fetchNewsKeywords() has not been implemented")
     }
 
-    public func new(keyword object: KeywordObj) -> Completable {
+    public func new(keyword parameters: Parameters?) -> Completable {
         fatalError("new(keyword:) has not been implemented")
     }
 
-    public func remove(keyword object: KeywordObj) -> Completable {
+    public func remove(keyword parameters: Parameters?) -> Completable {
         fatalError("remove(keyword:) has not been implemented")
     }
 

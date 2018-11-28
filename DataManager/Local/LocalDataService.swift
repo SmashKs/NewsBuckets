@@ -23,7 +23,7 @@ public protocol LocalDataService {
 
     func retrieveFakeList() -> Single<FakeEntity>
 
-    func update(info entity: Info) -> Completable
+    func replace(info entity: Info) -> Completable
 
-    func remove(info entity: Info?) -> Completable
+    func release(info entity: Info?) -> Completable
 }

@@ -9,4 +9,8 @@
 protocol SecondViewInput: Viewable {
     /// Setup initial state of the view
     func setupInitialState()
+
+    func getKeywordList() -> [String]
+
+    func setList(of keywords: [String])
 }

@@ -6,8 +6,11 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 import UIKit
+import FirebaseInstanceID
+import Utility
 
 class SecondViewController: UIViewController, SecondViewInput {
     @IBOutlet var tfKeyword: UITextField!
@@ -18,6 +21,8 @@ class SecondViewController: UIViewController, SecondViewInput {
     var disposable = DisposeBag()
 
     private var list = ["dfasf", "fdaf", "aaaa", "bvvvv"]
+    private var indexPath: IndexPath? = nil
+    private var deletedItemIndex = -1
 
     // MARK: Life cycle
 
@@ -25,11 +30,35 @@ class SecondViewController: UIViewController, SecondViewInput {
         super.viewDidLoad()
         tvKeywords.delegate = self
         tvKeywords.dataSource = self
+
+        presenter.getKeywordList()
+
+        btnSend.rx.tap.subscribe(onNext: {
+            if let text = self.tfKeyword.text {
+                self.presenter.add(text)
+            }
+            self.tfKeyword.endEditing(true)
+        }).disposed(by: disposable)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        presenter.getKeywordList()
     }
 
     // MARK: SecondViewInput
 
     func setupInitialState() {
+    }
+
+    func getKeywordList() -> [String] {
+        return list
+    }
+
+    func setList(of keywords: [String]) {
+        list = keywords
+        tvKeywords.reloadData()
     }
 }
 
@@ -46,5 +75,23 @@ extension SecondViewController: UITableViewDelegate, UITableViewDataSource {
         cell.keywordCellLabel.text = list[indexPath.row]
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            InstanceID.instanceID().instanceID { result, error in
+                if let result = result {
+                    self.presenter.delete(self.list[indexPath.row])
+
+                    self.list.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+
+                    let strings = self.list.joined(separator: ",")
+                    self.presenter.updateSubscriber(firebaseToken: result.token, keywords: strings)
+                }
+            }
+        }
     }
 }

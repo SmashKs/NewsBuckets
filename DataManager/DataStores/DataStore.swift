@@ -21,9 +21,9 @@ public protocol DataStore {
 
     func fetchNewsKeywords() -> Single<[Keyword]>
 
-    func new(keyword object: KeywordObj) -> Completable
+    func new(keyword parameters: Parameters?) -> Completable
 
-    func remove(keyword object: KeywordObj) -> Completable
+    func remove(keyword parameters: Parameters?) -> Completable
 
     func modify(token parameters: Parameters?) -> Completable
 

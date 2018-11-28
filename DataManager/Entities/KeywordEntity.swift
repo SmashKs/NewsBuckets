@@ -7,7 +7,7 @@
 //
 
 public class KeywordEntity {
-    var keyword: String? = nil
+    public var keyword: String? = nil
 
     init(_ keyword: String?) {
         self.keyword = keyword

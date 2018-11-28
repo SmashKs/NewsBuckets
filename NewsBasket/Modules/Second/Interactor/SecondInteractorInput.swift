@@ -6,7 +6,15 @@
 //  Copyright © 2018 SmashKs All rights reserved.
 //
 
-import Foundation
+import DataManager
+import RxSwift
 
 protocol SecondInteractorInput: Interactable {
+    func updateSubscriber(firebaseToken token: String, keywords str: String) -> Completable
+
+    func getKeywords() -> Single<[Keyword]>
+
+    func add(keyword str: String) -> Completable
+
+    func delete(keyword str: String) -> Completable
 }

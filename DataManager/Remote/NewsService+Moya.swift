@@ -26,8 +26,8 @@ public class NewsService: RemoteDataService {
         #if DEBUG
         request = request.debug()
         #endif
-        return request.do(onNext: {
-            if (String($0.statusCode).flatMap {
+        return request.do(onSuccess: {
+            if (String($0.statusCode).compactMap {
                 Int(String($0))
             }[0] != 2) {
                 throw MoyaError.statusCode($0)
@@ -40,8 +40,8 @@ public class NewsService: RemoteDataService {
         #if DEBUG
         request = request.debug()
         #endif
-        return request.do(onNext: {
-            if (String($0.statusCode).flatMap {
+        return request.do(onSuccess: {
+            if (String($0.statusCode).compactMap {
                 Int(String($0))
             }[0] != 2) {
                 throw MoyaError.statusCode($0)

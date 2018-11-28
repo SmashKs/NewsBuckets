@@ -9,6 +9,7 @@
 import RealmSwift
 import RxSwift
 import Utility
+import Realm
 
 public class NewsRealm: LocalDataService {
     private var realm: Realm
@@ -36,7 +37,7 @@ public class NewsRealm: LocalDataService {
 
     public func retrieveNewsKeywords() -> Single<[Keyword]> {
         return Single.create { single in
-            var list = Array(self.realm.objects(KeywordObj.self))
+            let list = Array(self.realm.objects(KeywordObj.self))
                 .map { obj in
                     Keyword(obj.keyword)
                 }
@@ -48,11 +49,49 @@ public class NewsRealm: LocalDataService {
     }
 
     public func create(keyword object: KeywordObj) -> Completable {
-        fatalError("createKeyword(keyword:) has not been implemented")
+        return Completable.create { [weak self] completable in
+            guard let strongSelf = self else {
+                return Disposables.create()
+            }
+
+            do {
+                try strongSelf.realm.write {
+                    let keys = strongSelf.realm.objects(KeywordObj.self).filter("keyword=%@", object.keyword)
+                    if keys.count != 0 {
+                        completable(.error(RxError.moreThanOneElement))
+                    } else {
+                        try strongSelf.realm.add(object)
+                        completable(.completed)
+                    }
+                }
+            } catch {
+                completable(.error(error))
+            }
+
+            return Disposables.create()
+        }
     }
 
     public func release(keyword object: KeywordObj) -> Completable {
-        fatalError("release(keyword:) has not been implemented")
+        return Completable.create { [weak self] completable in
+            guard let strongSelf = self else {
+                return Disposables.create()
+            }
+
+            do {
+                try strongSelf.realm.write {
+                    strongSelf.realm.delete(strongSelf
+                                                .realm
+                                                .objects(KeywordObj.self)
+                                                .filter("keyword=%@", object.keyword))
+                    completable(.completed)
+                }
+            } catch {
+                completable(.error(error))
+            }
+
+            return Disposables.create()
+        }
     }
 
     public func retrieveFakeList() -> Single<FakeEntity> {
@@ -63,7 +102,7 @@ public class NewsRealm: LocalDataService {
             }
     }
 
-    public func update(info entity: Info) -> Completable {
+    public func replace(info entity: Info) -> Completable {
         // OPTIMIZE: (jieyi 2018/05/22) We can create a good add rx completable method.
         return Completable.create {
             do {
@@ -80,7 +119,7 @@ public class NewsRealm: LocalDataService {
         }
     }
 
-    public func remove(info entity: Info? = nil) -> Completable {
+    public func release(info entity: Info? = nil) -> Completable {
         return Completable.create { [weak self] completable in
             guard let strongSelf = self else {
                 return Disposables.create()

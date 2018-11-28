@@ -71,11 +71,11 @@ public class NewsMMKV: LocalDataService {
         fatalError("retrieveFakeList() has not been implemented")
     }
 
-    public func update(info entity: Info) -> Completable {
+    public func replace(info entity: Info) -> Completable {
         fatalError("update(info:) has not been implemented")
     }
 
-    public func remove(info entity: Info?) -> Completable {
+    public func release(info entity: Info?) -> Completable {
         fatalError("remove(info:) has not been implemented")
     }
 }

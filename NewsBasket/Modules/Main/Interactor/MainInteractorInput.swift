@@ -16,7 +16,7 @@ protocol MainInteractorInput: Interactable {
 
     func updateSubscriber(_ firebaseToken: String, _ keywords: String) -> Completable
 
-    func getList() -> Single<[Keyword]>
+    func getKeywords() -> Single<[Keyword]>
 
     func getFakeList() -> Single<FakeEntity>
 

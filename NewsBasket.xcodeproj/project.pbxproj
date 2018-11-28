@@ -160,6 +160,7 @@
 		60700A558B632C9919DC003D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		60700A6D484BFAA7E4976CA1 /* LocalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		60700A80808CEBF8FEAA48E3 /* Viewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viewable.swift; sourceTree = "<group>"; };
+		60700AB363DB675A76D5353B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		60700AF46FAB1AD8D4B2EFFB /* SecondPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPresenter.swift; sourceTree = "<group>"; };
 		60700B0D6CF93429A34172E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		60700B58627A467DFB602D84 /* MainConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
@@ -664,6 +665,7 @@
 				4D87CCC5A06DADD86903581C /* Pods */,
 				8E81AFE43E1244331EC6FD6D /* Frameworks */,
 				9417787021A2A94D00472628 /* Products */,
+				60700AB363DB675A76D5353B /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};

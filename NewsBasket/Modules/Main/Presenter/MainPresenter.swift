@@ -46,7 +46,7 @@ class MainPresenter: MainPresenterInput {
 
     func getList() {
         interactor
-            .getList()
+            .getKeywords()
             .subscribe { single in
                 switch single {
                     case .success(let entity):
