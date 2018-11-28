@@ -38,7 +38,7 @@ class MainViewController: UIViewController, MainViewInput {
             if let error = error {
                 loge(error)
             } else if let res = res {
-                self.presenter.addSubscriber(firebaseToken: res.token)
+//                self.presenter.addSubscriber(firebaseToken: res.token)
             }
         }
 //        presenter.getList()
