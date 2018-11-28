@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import FirebaseInstanceID
 import Utility
 
 class SecondPresenter: SecondPresentInput {
@@ -40,6 +41,12 @@ class SecondPresenter: SecondPresentInput {
                 switch event {
                     case .completed:
                         self.view.setList(of: self.view.getKeywordList() + [keyword])
+                        InstanceID.instanceID().instanceID { result, error in
+                            if let result = result {
+                                let keys = self.view.getKeywordList().joined(separator: ",")
+                                self.updateSubscriber(firebaseToken: result.token, keywords: keys)
+                            }
+                        }
                     case .error(let error):
                         loge(error)
                 }

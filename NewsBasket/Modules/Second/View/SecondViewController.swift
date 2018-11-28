@@ -35,10 +35,15 @@ class SecondViewController: UIViewController, SecondViewInput {
 
         btnSend.rx.tap.subscribe(onNext: {
             if let text = self.tfKeyword.text {
-                self.presenter.add(text)
+                if !text.isEmpty {
+                    self.presenter.add(text)
+                }
             }
+            self.tfKeyword.text = ""
             self.tfKeyword.endEditing(true)
-        }).disposed(by: disposable)
+        }
+
+        ).disposed(by: disposable)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +52,7 @@ class SecondViewController: UIViewController, SecondViewInput {
         presenter.getKeywordList()
     }
 
-    // MARK: SecondViewInput
+// MARK: SecondViewInput
 
     func setupInitialState() {
     }
